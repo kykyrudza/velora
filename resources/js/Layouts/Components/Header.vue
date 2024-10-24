@@ -1,5 +1,27 @@
 <template>
     <header class="bg-[#4B2E39] px-12 py-2 text-white">
+<!--        Login-Form-->
+        <div class="bg-green-500 absolute w-96 h-52 top-80 left-60 ">
+            <div class="flex flex-col gap-2 p-2 items-center justify-center">
+                <div class="">
+                    Login
+                </div>
+                <div>
+                    <input class="outline-none p-1 bg-[#4B2E39] text-white" type="email" placeholder="Email" />
+                </div>
+                <div>
+                    <input class="outline-none p-1 bg-[#4B2E39] text-white" type="password" placeholder="Password">
+                </div>
+                <div>
+                    <a href="#">not login?</a>
+                </div>
+                <div>
+                    <button class="py-2 px-4 rounded-md bg-[#4B2E39]">Submit</button>
+                </div>
+            </div>
+        </div>
+
+
         <!--    Menu-Tab-->
         <div :class="[MenuBar, 'md:hidden duration-300 absolute top-12 h-[680px] w-1/2 bg-[#8B1E3F] p-12']">
 

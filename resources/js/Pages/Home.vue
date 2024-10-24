@@ -1,9 +1,9 @@
 <template>
-        <div class="">
+    <div class="">
             <div>
                 <div>
-                    <div class="w-80 h-32 bg-green-500">
-                        123
+                    <div class="">
+
                     </div>
                 </div>
                 <div>
