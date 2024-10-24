@@ -1,28 +1,31 @@
 <template>
     <header class="bg-[#4B2E39] px-12 py-2 text-white">
-<!--        Login-Form-->
-        <div class="bg-green-500 absolute w-96 h-52 top-80 left-60 ">
-            <div class="flex flex-col gap-2 p-2 items-center justify-center">
-                <div class="">
-                    Login
-                </div>
+        <!--Login-Form-->
+        <div class="bg-green-500 absolute w-96 h-auto top-80 left-60 p-6 rounded-md shadow-lg">
+            <form class="flex flex-col gap-4">
+                <!-- Заголовок формы -->
+                <h2 class="text-2xl text-white font-bold">Login</h2>
+
+                <!-- Поле для ввода Email -->
                 <div>
-                    <input class="outline-none p-1 bg-[#4B2E39] text-white" type="email" placeholder="Email" />
+                    <label for="email" class="block text-white mb-2">Email</label>
+                    <input id="email" name="email" class="outline-none w-full p-2 bg-[#4B2E39] text-white rounded-md" type="email" placeholder="Введите ваш Email" required />
                 </div>
+
+                <!-- Поле для ввода Пароля -->
                 <div>
-                    <input class="outline-none p-1 bg-[#4B2E39] text-white" type="password" placeholder="Password">
+                    <label for="password" class="block text-white mb-2">Password</label>
+                    <input id="password" name="password" class="outline-none w-full p-2 bg-[#4B2E39] text-white rounded-md" type="password" placeholder="Введите ваш пароль" required />
                 </div>
+
+                <!-- Кнопка отправки формы -->
                 <div>
-                    <a href="#">not login?</a>
+                    <button type="submit" class="py-2 px-4 w-full rounded-md bg-[#4B2E39] text-white font-semibold">Войти</button>
                 </div>
-                <div>
-                    <button class="py-2 px-4 rounded-md bg-[#4B2E39]">Submit</button>
-                </div>
-            </div>
+            </form>
         </div>
 
-
-        <!--    Menu-Tab-->
+        <!--Menu-Tab-->
         <div :class="[MenuBar, 'md:hidden duration-300 absolute top-12 h-[680px] w-1/2 bg-[#8B1E3F] p-12']">
 
             <div class=" active:scale-110 duration-300 absolute bottom-2 -left-24 size-72">
