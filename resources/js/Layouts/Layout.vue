@@ -1,9 +1,7 @@
 <template>
-    <div class="bg-amber-300">
+    <div class="">
         <Header />
-        <div class="container mx-auto ">
-            <slot />
-        </div>
+        <slot />
     </div>
 </template>
 

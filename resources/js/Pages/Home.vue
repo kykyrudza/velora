@@ -1,7 +1,22 @@
 <template>
-    <div class="bg-amber-100 p-10">
-        <h1>{{ title }}</h1>
-    </div>
+    <div class="">
+            <div>
+                <div>
+                    <div class="">
+
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <img src="" alt="">
+                    </div>
+                    <div>
+                        <img src="" alt="">
+                    </div>
+                </div>
+
+            </div>
+        </div>
 </template>
 <script>
 export default {
