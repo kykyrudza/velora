@@ -9,26 +9,23 @@ use Inertia\Inertia;
 
 class AuthController extends Controller
 {
-    public function index()
-    {
-        return Inertia::render('Login');
-    }
-
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|email:rfc',
+            'email' => 'required|email',
             'password' => 'required|min:8',
         ]);
-        if (Auth::attempt($credentials)) {
 
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->route('home');
+            return redirect()->route('home')->with('user', Auth::user());
         }
 
         return back()->withErrors([
             'email' => 'Неверный email или пароль.',
         ])->onlyInput('email');
     }
+
+
 }
