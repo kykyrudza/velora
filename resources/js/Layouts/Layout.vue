@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <Header />
+        <Header :auth="auth"/>
         <slot />
     </div>
 </template>
@@ -10,6 +10,12 @@ import Header from './Components/Header.vue';
 export default {
     components: {
         Header
+    },
+    props: {
+        auth: {
+            type: Object,
+            required: true
+        }
     }
 }
 </script>
