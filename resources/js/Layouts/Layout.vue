@@ -1,9 +1,7 @@
 <template>
-    <div class="bg-amber-300">
-        <Header />
-        <div class="container mx-auto ">
-            <slot />
-        </div>
+    <div class="">
+        <Header :auth="auth"/>
+        <slot />
     </div>
 </template>
 
@@ -12,6 +10,12 @@ import Header from './Components/Header.vue';
 export default {
     components: {
         Header
+    },
+    props: {
+        auth: {
+            type: Object,
+            required: true
+        }
     }
 }
 </script>
