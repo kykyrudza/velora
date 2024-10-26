@@ -30,7 +30,7 @@ class UserController extends Controller
     {
         $request->validate(['firstName' => 'required|string|max:255']);
         $user = Auth::user();
-        $user->first_name = $request->firstName;
+        $user->firstName = $request->firstName;
         $user->save();
 
         return response()->json(['success' => 'First name updated successfully.']);
@@ -40,7 +40,7 @@ class UserController extends Controller
     {
         $request->validate(['lastName' => 'required|string|max:255']);
         $user = Auth::user();
-        $user->last_name = $request->lastName;
+        $user->lastNname = $request->lastName;
         $user->save();
 
         return response()->json(['success' => 'Last name updated successfully.']);
@@ -73,7 +73,7 @@ class UserController extends Controller
 
         if ($request->hasFile('avatar')) {
             $path = $request->file('avatar')->store('avatars', 'public');
-            $user->avatar = 'storage/' . $path;
+            $user->avatar = 'storage/user_avatar_images' . $path;
             $user->save();
         }
 
