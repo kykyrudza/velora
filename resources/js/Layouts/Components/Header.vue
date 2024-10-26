@@ -43,7 +43,7 @@
             <div class="hidden md:block lora">
                 <Link v-if="auth.user" :href="route('profile.show', auth.user.id)">
                     <button class="py-2 px-7">
-                        {{ auth.user.firstName }} {{ auth.user.lastName }}
+                        <img class="size-10 rounded-md" :src="auth.user.avatar" alt="">
                     </button>
                 </Link>
                 <Link v-else :href="route('login.index')" class="rounded-md bg-[#8B1E3F] py-2 px-7">

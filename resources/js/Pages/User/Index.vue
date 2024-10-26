@@ -2,9 +2,19 @@
 <template>
     <div class="flex w-full">
         <div class="w-1/2">
-            <pre>
-               User: {{ user }}
-            </pre>
+            <div class="flex">
+                <div class="w-1/2">
+                    <img class="size-32" :src="user.avatar" alt="">
+                </div>
+            <div class="w-1/2">
+                <div>{{ user.firstName }}</div>
+                <div>{{ user.lastName }}</div>
+            </div>
+
+
+                <div>{{ user.discription }}</div>
+
+            </div>
         </div>
         <div class="w-1/2">
             <pre>
