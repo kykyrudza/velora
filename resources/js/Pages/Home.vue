@@ -3,6 +3,7 @@
             <div>
                 <p v-if="auth.user">User: {{ auth.user.name }}</p>
                 <pre>{{ auth }}</pre>
+                <pre>{{ recipes }}</pre>
                 <div>
                     <div class="">
 
@@ -27,7 +28,8 @@ export default {
         auth: {
             type: Object,
             default: () => ({ user: null })
-        }
+        },
+        recipes: Object
     },
 };
 </script>
