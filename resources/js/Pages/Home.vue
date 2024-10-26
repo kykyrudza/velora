@@ -1,6 +1,8 @@
 <template>
     <div class="">
             <div>
+                <p v-if="auth.user">User: {{ auth.user.name }}</p>
+                <pre>{{ auth }}</pre>
                 <div>
                     <div class="">
 
@@ -22,6 +24,10 @@
 export default {
     props:{
         title: String,
+        auth: {
+            type: Object,
+            default: () => ({ user: null })
+        }
     },
 };
 </script>
