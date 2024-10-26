@@ -14,8 +14,7 @@ return new class extends Migration
 
             // Ограничение на длину, обязательно, поддержка UTF-8
             $table->string('name', 100)
-                ->nullable(false)
-                ->unique(); // Уникальное название рецепта
+                ->nullable(false);
 
             // Обязательно, поддержка UTF-8
             $table->text('description')

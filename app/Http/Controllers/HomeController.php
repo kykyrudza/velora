@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Recipes;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -11,6 +12,7 @@ class HomeController extends Controller
     {
         return Inertia::render('Home',[
             'title' => 'Home',
+            'recipes' => Recipes::with('ingredients')->get()
         ]);
     }
     public function about()
