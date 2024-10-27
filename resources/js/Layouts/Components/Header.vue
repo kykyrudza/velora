@@ -1,12 +1,25 @@
 <template>
-    <header class="bg-[#4B2E39] px-12 py-2 text-white">
-        <div :class="[MenuBar, 'md:hidden duration-300 absolute top-12 h-[680px] w-1/2 bg-[#8B1E3F] p-12']">
+    <div @click="BlackHide"  :class="[MenuBlack , 'fixed md:hidden duration-300 z-40 w-screen h-screen top-0 left-0 bg-black opacity-50']"></div>
+    <header class="bg-[#4B2E39] px-12 py-2 fixed top-0 w-full  z-50 text-white">
 
-            <div class=" active:scale-110 duration-300 absolute bottom-2 -left-24 size-72">
+        <div :class="[MenuBar, 'md:hidden duration-300 fixed z-50 top-12 h-[680px] w-1/2 bg-[#8B1E3F] p-12']">
+
+            <div class=" active:scale-110 duration-300 absolute -bottom-12 -left-24 size-72">
                 <img class="drop-shadow-xl duration-300 active:drop-shadow-2xl" :src="menuImage" alt="menu-image-1">
             </div>
             <div class="">
-                <div class="flex flex-col dancing text-xl gap-8">
+                <div class=" flex flex-col lora text-lg gap-8">
+                    <Link v-if="auth.user" :href="route('profile.show', auth.user.id)">
+                        <button class="">
+                            <img class="size-32 rounded-xl" :src="auth.user.avatar" alt="">
+                        </button>
+                    </Link>
+                    <button v-else class="menu-login">
+                        <Link :href="route('login.index')">
+                            Login
+                        </Link>
+                    </button>
+
                     <button class="menu-buttons" >
                         <Link :href="route('home')">
                             Home
@@ -22,7 +35,6 @@
                             Contacts
                         </Link>
                     </button>
-                    <button class="menu-buttons" >Gutter</button>
                 </div>
 
             </div>
@@ -43,7 +55,7 @@
             <div class="hidden md:block lora">
                 <Link v-if="auth.user" :href="route('profile.show', auth.user.id)">
                     <button class="py-2 px-7">
-                        {{ auth.user.firstName }} {{ auth.user.lastName }}
+                        <img class="size-10 rounded-md" :src="auth.user.avatar" alt="">
                     </button>
                 </Link>
                 <Link v-else :href="route('login.index')" class="rounded-md bg-[#8B1E3F] py-2 px-7">
@@ -70,6 +82,7 @@ export default {
     },
     data(){
         return {
+            MenuBlack: 'hidden' ,
             MenuBar: '-right-full',
             BurgerSwap: 'ri-menu-line',
             menuImage:'/img/menu-image-1.png',
@@ -80,7 +93,15 @@ export default {
         HideButton(){
             this.MenuBar = this.MenuBar === '-right-full' ? 'right-0' : '-right-full';
             this.BurgerSwap = this.BurgerSwap === 'ri-menu-line' ? 'ri-close-large-line' : 'ri-menu-line';
+            this.MenuBlack = this.MenuBlack === 'hidden' ? 'block' : 'hidden';
+
+        },
+        BlackHide(){
+            this.MenuBlack = this.MenuBlack === 'hidden' ? 'block' : 'hidden';
+            this.MenuBar = '-right-full';
+            this.BurgerSwap = 'ri-menu-line';
         }
+
     },
     components: { Link },
 };
@@ -96,6 +117,9 @@ export default {
     font-family: 'Lora', serif;
 }
 .menu-buttons{
+    @apply p-4 bg-[#4B2E39] bg-opacity-20 duration-300 active:bg-opacity-40 active:drop-shadow-xl active:scale-110 text-left  rounded-md;
+}
+.menu-login{
     @apply p-4 bg-[#4B2E39] bg-opacity-20 duration-300 active:bg-opacity-40 active:drop-shadow-xl active:scale-110 text-left  rounded-md;
 }
 </style>
