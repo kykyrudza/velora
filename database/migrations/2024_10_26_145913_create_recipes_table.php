@@ -33,7 +33,8 @@ return new class extends Migration
 
             // Поле для хранения пути к изображению, может быть пустым
             $table->string('image', 255)
-                ->nullable(); // URL изображения рецепта
+                ->nullable()
+                ->default('storage/default/default_recipes.png'); // URL изображения рецепта
 
             // Внешний ключ на пользователя, который создал рецепт
             $table->foreignId('user_id')
