@@ -37,7 +37,7 @@ return new class extends Migration
             // Поле может быть пустым, дефолтное изображение
             $table->string('avatar', 255)
                 ->nullable()
-                ->default('default_avatar.png');
+                ->default('storage/default/default_avatar.png');
 
             // Обязательно для хранения пароля (зашифрованного)
             $table->string('password', 255)
