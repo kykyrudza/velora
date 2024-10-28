@@ -1,6 +1,6 @@
 <template>
-    <div @click="BlackHide"  :class="[MenuBlack , 'fixed md:hidden duration-300 z-40 w-screen h-screen top-0 left-0 bg-black opacity-50']"></div>
-    <header class="bg-[#4B2E39] px-12 py-2 fixed top-0 w-full  z-50 text-white">
+    <div @click="BlackHide"  :class="[MenuBlack , ' md:hidden duration-300 z-40 w-screen h-screen top-0 left-0 bg-black opacity-50']"></div>
+    <header class="bg-[#4B2E39] px-12 py-2  top-0 w-full  z-50 text-white">
 
         <div :class="[MenuBar, 'md:hidden duration-300 fixed z-50 top-12 h-[680px] w-1/2 bg-[#8B1E3F] p-12']">
 
