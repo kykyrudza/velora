@@ -1,12 +1,14 @@
 <template>
-    <div class="flex w-full">
-        <div class="w-full mx-10 my-5">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <RecipeCard
-                    v-for="recipe in recipes"
-                    :key="recipe.id"
-                    :recipes="recipe"
-                />
+    <div class="flex w-full max-w-screen-xl">
+        <div class="w-full">
+            <div class="py-10 lg:py-14 mx-auto">
+                <div class="grid lg:grid-cols-3 gap-4">
+                    <RecipeCard
+                        v-for="recipe in recipes"
+                        :key="recipe.id"
+                        :recipes="recipe"
+                    />
+                </div>
             </div>
         </div>
     </div>
