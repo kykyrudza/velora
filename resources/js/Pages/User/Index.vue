@@ -1,14 +1,14 @@
 <template>
-    <section class="mt-5">
+    <section class="mt-24">
         <!-- Профиль пользователя -->
         <div>
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between md:justify-start">
                 <!-- Аватар -->
                 <div>
-                    <img class="w-32 h-32 rounded-full object-cover" :src="`http://127.0.0.1:8000/${user.avatar}`" alt="User Avatar">
+                    <img class="size-32 md:size-48 md:mr-8 lg: rounded-full object-cover" :src="`http://127.0.0.1:8000/${user.avatar}`" alt="User Avatar">
                 </div>
                 <!-- Имя пользователя -->
-                <div class="lora font-bold text-2xl text-end">
+                <div class="lora font-bold text-2xl text-end md:text-start">
                     <p>{{ user.firstName }}</p>
                     <p>{{ user.lastName }}</p>
                 </div>
@@ -29,9 +29,10 @@
         </div>
 
         <!-- Список рецептов -->
+        <!-- Список рецептов -->
         <div class="w-full">
             <div class="py-10 lg:py-14 mx-auto">
-                <div class="grid lg:grid-cols-3 gap-4">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <RecipeCard
                         v-for="recipe in recipes"
                         :key="recipe.id"

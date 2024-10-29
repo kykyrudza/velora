@@ -1,10 +1,11 @@
 <template>
-    <header class="bg-[#4B2E39] px-5 py-2  top-0 w-full  z-50 text-white">
-        <div
-            @click="BlackHide"
-            :class="[MenuBlack, 'fixed md:hidden transition-opacity duration-300 z-40 w-screen h-screen bg-black opacity-50']">
-        </div>
-        <div :class="[MenuBar, 'md:hidden duration-300 fixed z-50  h-[680px] w-2/3 bg-[#8B1E3F]']">
+    <div
+        @click="BlackHide"
+        :class="[MenuBlack, 'fixed md:hidden transition-opacity duration-300 z-40 w-full h-full bg-black opacity-50']">
+    </div>
+    <header class="bg-[#4B2E39] px-5 py-2 fixed top-0 w-full  z-50 text-white">
+
+        <div :class="[MenuBar, 'md:hidden p-12 duration-300 fixed z-50 top-12  h-[680px] w-1/2 bg-[#8B1E3F]']">
             <div class=" active:scale-110 duration-300 absolute -bottom-12 -left-24 size-72">
                 <img class="drop-shadow-xl duration-300 active:drop-shadow-2xl" :src="menuImage" alt="menu-image-1">
             </div>
@@ -64,7 +65,7 @@
                 </Link>
             </div>
             <div class=" md:hidden duration-300 active:scale-75">
-                <i @click="HideButton" :class="[BurgerSwap, 'ri-menu-line  cursor-pointer text-xl']"></i>
+                <i @click="HideButton" :class="[BurgerSwap, 'z-50   cursor-pointer text-xl']"></i>
             </div>
         </div>
     </header>
@@ -108,14 +109,7 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
-.dancing{
-    font-family: 'Dancing Script', cursive;
-}
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
-.lora{
-    font-family: 'Lora', serif;
-}
+
 .menu-buttons{
     @apply p-4 bg-[#4B2E39] bg-opacity-20 duration-300 active:bg-opacity-40 active:drop-shadow-xl active:scale-110 text-left  rounded-md;
 }
