@@ -1,48 +1,50 @@
 <template>
-    <div class="border border-black w-80 h-56 rounded-xl p-5 text-white bg-contain relative"
-         :style="{ backgroundImage: `url(${recipes.image})` }">
-        <div class="absolute inset-0 bg-black opacity-60 rounded-xl"></div>
-        <div class="recipe-card relative z-10">
-            <div class="w-full flex justify-between">
-                <div class="w-1/2">
-                    <ul class="flex gap-2">
-                        <li v-for="ingredient in recipes.ingredients" :key="ingredient.id">
-                            <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
+    <Link
+        class="group relative block rounded-xl focus:outline-none"
+        :href="route('home')">
+        <div class="shrink-0 relative rounded-xl overflow-hidden w-full h-[350px] before:absolute before:inset-x-0 before:z-[1] before:size-full before:bg-gradient-to-t before:from-gray-900/70">
+            <img
+                class="size-full absolute top-0 start-0 object-cover"
+                :src="`http://127.0.0.1:8000/${recipes.image}`"
+                :alt="recipes.name">
+        </div>
+
+        <div class="absolute top-0 inset-x-0 z-10">
+            <div class="p-4 flex flex-col h-full sm:p-6">
+                <!-- Avatar -->
+                <div class="flex items-center justify-between">
+                    <div class="shrink-0">
+                        <ul class="flex flex-wrap gap-2">
+                            <li v-for="ingredient in recipes.ingredients" :key="ingredient.id"
+                                class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs sm:text-sm font-medium text-gray-700 ring-1 ring-gray-500/10">
                                 {{ ingredient.name }}
-                            </span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="w-1/2 flex justify-end">
-                    <img
-                        class="w-auto h-7"
-                        :src="`storage/default/${recipes.difficulty}_star.png`"
-                        alt="Difficulty Star">
-                </div>
-            </div>
-            <div class="w-full lora text-4xl my-4 flex justify-between border-b pb-2">
-                <h3>{{ recipes.name }}</h3>
-            </div>
-            <div class="w-full lora text-md my-4">
-                <p>{{ recipes.description }}</p>
-            </div>
-            <div class="lora w-full">
-                <div class="w-full flex justify-between mt-4">
-                    <div class="w-1/2">
-                        <p>Время: {{ recipes.cooking_time }} мин.</p>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="w-1/2 flex justify-end">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
-                        </svg>
+                    <div class="ms-2.5 sm:ms-4">
+                        <img :src="`http://127.0.0.1:8000/storage/default/${recipes.difficulty}_star.png`" alt="Difficulty Star"
+                             class="w-auto h-7">
                     </div>
                 </div>
+                <!-- End Avatar -->
             </div>
         </div>
-    </div>
+
+        <div class="absolute bottom-0 inset-x-0 z-10">
+            <div class="flex flex-col h-full p-4 sm:p-6">
+                <h3 class="text-lg sm:text-3xl font-semibold text-white group-hover:text-white/80 group-focus:text-white/80">
+                    {{ recipes.name }}
+                </h3>
+                <p class="mt-2 text-white/80">
+                    {{ recipes.description }}
+                </p>
+            </div>
+        </div>
+    </Link>
 </template>
 
 <script>
+import {Link} from '@inertiajs/inertia-vue3';
 export default {
     name: "RecipeCard",
     props: {
@@ -51,5 +53,8 @@ export default {
             required: true
         }
     },
+    components: {
+        Link
+    }
 }
 </script>

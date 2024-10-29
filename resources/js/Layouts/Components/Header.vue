@@ -1,9 +1,10 @@
 <template>
-    <div @click="BlackHide"  :class="[MenuBlack , ' md:hidden duration-300 z-40 w-screen h-screen top-0 left-0 bg-black opacity-50']"></div>
-    <header class="bg-[#4B2E39] px-12 py-2  top-0 w-full  z-50 text-white">
-
-        <div :class="[MenuBar, 'md:hidden duration-300 fixed z-50 top-12 h-[680px] w-1/2 bg-[#8B1E3F] p-12']">
-
+    <header class="bg-[#4B2E39] px-5 py-2  top-0 w-full  z-50 text-white">
+        <div
+            @click="BlackHide"
+            :class="[MenuBlack, 'fixed md:hidden transition-opacity duration-300 z-40 w-screen h-screen bg-black opacity-50']">
+        </div>
+        <div :class="[MenuBar, 'md:hidden duration-300 fixed z-50  h-[680px] w-2/3 bg-[#8B1E3F]']">
             <div class=" active:scale-110 duration-300 absolute -bottom-12 -left-24 size-72">
                 <img class="drop-shadow-xl duration-300 active:drop-shadow-2xl" :src="menuImage" alt="menu-image-1">
             </div>
@@ -11,7 +12,7 @@
                 <div class=" flex flex-col lora text-lg gap-8">
                     <Link v-if="auth.user" :href="route('profile.show', auth.user.id)">
                         <button class="">
-                            <img class="size-32 rounded-xl" :src="auth.user.avatar" alt="">
+                            <img class="size-32 rounded-xl" :src="`http://127.0.0.1:8000/${auth.user.avatar}`" alt="">
                         </button>
                     </Link>
                     <button v-else class="menu-login">
@@ -54,8 +55,8 @@
             </div>
             <div class="hidden md:block lora">
                 <Link v-if="auth.user" :href="route('profile.show', auth.user.id)">
-                    <button class="py-2 px-7">
-                        <img class="size-10 rounded-md" :src="auth.user.avatar" alt="">
+                    <button>
+                        <img class="size-10 rounded-md" :src="`http://127.0.0.1:8000/${auth.user.avatar}`" alt="">
                     </button>
                 </Link>
                 <Link v-else :href="route('login.index')" class="rounded-md bg-[#8B1E3F] py-2 px-7">
@@ -88,21 +89,20 @@ export default {
             menuImage:'/img/menu-image-1.png',
         }
     },
-    methods:{
+    methods: {
         route,
-        HideButton(){
+        HideButton() {
             this.MenuBar = this.MenuBar === '-right-full' ? 'right-0' : '-right-full';
             this.BurgerSwap = this.BurgerSwap === 'ri-menu-line' ? 'ri-close-large-line' : 'ri-menu-line';
-            this.MenuBlack = this.MenuBlack === 'hidden' ? 'block' : 'hidden';
-
+            this.MenuBlack = this.MenuBar === 'right-0' ? 'block' : 'hidden';
         },
-        BlackHide(){
-            this.MenuBlack = this.MenuBlack === 'hidden' ? 'block' : 'hidden';
+        BlackHide() {
+            this.MenuBlack = 'hidden';
             this.MenuBar = '-right-full';
             this.BurgerSwap = 'ri-menu-line';
         }
-
     },
+
     components: { Link },
 };
 </script>

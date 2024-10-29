@@ -1,5 +1,5 @@
 <template>
-    <section class="mx-12 mt-24">
+    <section class="mt-5">
         <!-- Профиль пользователя -->
         <div>
             <div class="flex items-center justify-between">
@@ -29,54 +29,14 @@
         </div>
 
         <!-- Список рецептов -->
-        <div class="my-8">
-            <h2 class="text-3xl font-semibold lora mb-4">Recipes:</h2>
-            <div v-for="recipe in recipes" :key="recipe.id" class="bg-white drop-shadow-xl rounded-lg p-5 mb-6">
-                <div class="flex items-center space-x-4">
-                    <div v-if="recipe.image">
-                        <img :src="`http://127.0.0.1:8000/${recipe.image}`" alt="Recipe Image" class="w-24 h-24 object-cover rounded-md">
-                    </div>
-                    <div v-else>
-                        <div class="w-24 h-24 bg-gray-300 flex items-center justify-center rounded-md">
-                            <span class="text-gray-500">No Image</span>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-semibold">{{ recipe.name }}</h3>
-                </div>
-
-                <!-- Описание рецепта -->
-                <p class="text-gray-600 mt-3">{{ recipe.description }}</p>
-
-                <!-- Время приготовления и сложность -->
-                <div class="flex justify-between mt-4">
-                    <div class="text-gray-700">
-                        <strong>Cooking Time:</strong> {{ recipe.cooking_time }} mins
-                    </div>
-                    <div class="text-gray-700 flex items-center">
-                        <strong class="mr-2">Difficulty:</strong>
-                        <template v-if="recipe.difficulty === 'easy'">
-                            <i class="ri-star-fill text-green-500"></i>
-                        </template>
-                        <template v-else-if="recipe.difficulty === 'medium'">
-                            <i class="ri-star-fill text-yellow-500"></i>
-                            <i class="ri-star-fill text-yellow-500"></i>
-                        </template>
-                        <template v-else-if="recipe.difficulty === 'hard'">
-                            <i class="ri-star-fill text-red-500"></i>
-                            <i class="ri-star-fill text-red-500"></i>
-                            <i class="ri-star-fill text-red-500"></i>
-                        </template>
-                    </div>
-                </div>
-
-                <!-- Ингредиенты -->
-                <div class="mt-4">
-                    <h4 class="font-medium text-gray-800">Ingredients:</h4>
-                    <ul class="list-disc list-inside ml-4">
-                        <li v-for="ingredient in recipe.ingredients" :key="ingredient.id" class="text-gray-700">
-                            {{ ingredient.name }}
-                        </li>
-                    </ul>
+        <div class="w-full">
+            <div class="py-10 lg:py-14 mx-auto">
+                <div class="grid lg:grid-cols-3 gap-4">
+                    <RecipeCard
+                        v-for="recipe in recipes"
+                        :key="recipe.id"
+                        :recipes="recipe"
+                    />
                 </div>
             </div>
         </div>
@@ -85,6 +45,7 @@
 
 <script>
 import { Link } from '@inertiajs/inertia-vue3';
+import RecipeCard from "../Components/RecipeCard.vue";
 
 export default {
     name: "Index",
@@ -93,6 +54,7 @@ export default {
         recipes: Array,
     },
     components: {
+        RecipeCard,
         Link
     },
 }
